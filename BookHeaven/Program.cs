@@ -51,11 +51,17 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
         builder => builder
-            .WithOrigins("http://34.192.89.242:5173")
+            .WithOrigins("http://34.192.89.242:5173", "http://localhost:5173")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()
             .WithExposedHeaders("x-total-count"));
+});
+
+// Configure Kestrel to listen on all interfaces
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5176);
 });
 
 // Add Database Context

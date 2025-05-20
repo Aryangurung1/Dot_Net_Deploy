@@ -6,6 +6,8 @@ services:
       - "5173:5173"
     depends_on:
       - backend
+    environment:
+      - VITE_API_URL=http://34.192.89.242:5176
 
   backend:
     build: ./BookHeaven
@@ -15,7 +17,10 @@ services:
       - postgres
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5176
       - ConnectionStrings__DefaultConnection=Host=postgres;Database=BookHeaven;Username=postgres;Password=yourpassword
+    networks:
+      - app-network
 
   postgres:
     image: postgres
@@ -28,6 +33,12 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   pgdata:
