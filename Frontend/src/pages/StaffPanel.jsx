@@ -16,7 +16,7 @@ const StaffPanel = () => {
     setIsSubmitting(true);
     try {
       const response = await axios.post(
-        'http://localhost:5176/api/Staff/fulfill-order',
+        'http://34.192.89.242:5176/api/Staff/fulfill-order',
         { claimCode },
         {
           headers: { Authorization: `Bearer ${token}` },

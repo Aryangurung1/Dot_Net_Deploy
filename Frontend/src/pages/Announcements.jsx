@@ -11,7 +11,7 @@ const Announcements = () => {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const res = await axios.get('http://localhost:5176/api/announcements/active');
+        const res = await axios.get('http://34.192.89.242:5176/api/announcements/active');
         setAnnouncements(res.data);
       } catch (error) {
         console.error('Failed to fetch announcements:', error);

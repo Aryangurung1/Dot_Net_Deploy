@@ -19,7 +19,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Orders/my-orders', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Orders/my-orders', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(res.data);
@@ -35,7 +35,7 @@ const Orders = () => {
       const bookIds = Array.from(new Set(orders.flatMap(order => order.items.map(item => item.bookId))));
       Promise.all(
         bookIds.map(id =>
-          axios.get(`http://localhost:5176/api/Books/${id}`)
+          axios.get(`http://34.192.89.242:5176/api/Books/${id}`)
             .then(res => ({ id, data: res.data }))
             .catch(() => null)
         )
@@ -51,7 +51,7 @@ const Orders = () => {
 
   const handleCancelOrder = async (orderId) => {
     try {
-      await axios.post(`http://localhost:5176/api/Orders/cancel/${orderId}`, {}, {
+      await axios.post(`http://34.192.89.242:5176/api/Orders/cancel/${orderId}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchOrders();
@@ -219,7 +219,7 @@ const Orders = () => {
                       <div className="space-y-3">
                         {order.items.map((item, index) => {
                           const imageUrl = bookDetails[item.bookId]?.imageUrl
-                            ? `http://localhost:5176${bookDetails[item.bookId].imageUrl}`
+                            ? `http://34.192.89.242:5176${bookDetails[item.bookId].imageUrl}`
                             : '/placeholder-book.jpg';
                           return (
                             <div key={index} className="flex items-center justify-between">

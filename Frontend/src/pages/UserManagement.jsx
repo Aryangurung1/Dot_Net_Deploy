@@ -59,7 +59,7 @@ const UserManagement = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Admin/members', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Admin/members', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setMembers(res.data);
@@ -72,7 +72,7 @@ const UserManagement = () => {
 
   const fetchStaffs = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Admin/staffs', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Admin/staffs', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStaffs(res.data);
@@ -86,7 +86,7 @@ const UserManagement = () => {
   const handleAddStaff = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5176/api/Admin/staffs', newStaff, {
+      const res = await axios.post('http://34.192.89.242:5176/api/Admin/staffs', newStaff, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNewStaff({ name: '', email: '', password: '', position: '' });
@@ -112,7 +112,7 @@ const UserManagement = () => {
   const confirmDeleteStaff = async () => {
     if (!staffToDelete) return;
     try {
-      await axios.delete(`http://localhost:5176/api/Admin/staffs/${staffToDelete.staffId}`, {
+      await axios.delete(`http://34.192.89.242:5176/api/Admin/staffs/${staffToDelete.staffId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStaffs(prev => prev.filter(staff => staff.staffId !== staffToDelete.staffId));
@@ -138,7 +138,7 @@ const UserManagement = () => {
   const confirmDeleteMember = async () => {
     if (!memberToDelete) return;
     try {
-      const response = await axios.delete(`http://localhost:5176/api/Admin/members/${memberToDelete.memberId}`, {
+      const response = await axios.delete(`http://34.192.89.242:5176/api/Admin/members/${memberToDelete.memberId}`, {
         headers: { 
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
     if (!user || user.role !== 'Member') return;
     
     try {
-      const res = await axios.get('http://localhost:5176/api/Cart', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Cart', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const totalItems = res.data.reduce((sum, item) => sum + item.quantity, 0);

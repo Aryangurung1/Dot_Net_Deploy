@@ -65,11 +65,11 @@ const BooksPage = () => {
     const fetchFilters = async () => {
       try {
         const [a, g, l, f, p] = await Promise.all([
-          axios.get('http://localhost:5176/api/books/authors'),
-          axios.get('http://localhost:5176/api/books/genres'),
-          axios.get('http://localhost:5176/api/books/languages'),
-          axios.get('http://localhost:5176/api/books/formats'),
-          axios.get('http://localhost:5176/api/books/publishers'),
+          axios.get('http://34.192.89.242:5176/api/books/authors'),
+          axios.get('http://34.192.89.242:5176/api/books/genres'),
+          axios.get('http://34.192.89.242:5176/api/books/languages'),
+          axios.get('http://34.192.89.242:5176/api/books/formats'),
+          axios.get('http://34.192.89.242:5176/api/books/publishers'),
         ]);
         setAuthors(a.data);
         setGenres(g.data);
@@ -118,7 +118,7 @@ const BooksPage = () => {
 
   const fetchBookmarks = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Bookmark', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Bookmark', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookmarks(res.data.map(b => b.bookId));
@@ -166,7 +166,7 @@ const BooksPage = () => {
         selectedPublishers.forEach(publisher => params.append('publishers[]', publisher.value));
       }
 
-      const res = await axios.get(`http://localhost:5176/api/books`, {
+      const res = await axios.get(`http://34.192.89.242:5176/api/books`, {
         headers: { Authorization: `Bearer ${token}` },
         params
       });
@@ -192,14 +192,14 @@ const BooksPage = () => {
     try {
       if (isBookBookmarked(bookId)) {
         // Remove bookmark
-        await axios.delete(`http://localhost:5176/api/Bookmark/${bookId}`, {
+        await axios.delete(`http://34.192.89.242:5176/api/Bookmark/${bookId}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBookmarks(prev => prev.filter(id => id !== bookId));
         addToast('Book removed from bookmarks', 'success');
       } else {
         // Add bookmark
-        await axios.post(`http://localhost:5176/api/Bookmark/${bookId}`, {}, {
+        await axios.post(`http://34.192.89.242:5176/api/Bookmark/${bookId}`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setBookmarks(prev => [...prev, bookId]);
@@ -225,7 +225,7 @@ const BooksPage = () => {
     }
 
     try {
-      await axios.post('http://localhost:5176/api/Cart', {
+      await axios.post('http://34.192.89.242:5176/api/Cart', {
         bookId,
         quantity: 1
       }, {
@@ -615,7 +615,7 @@ const BooksPage = () => {
                   >
                     <div className="relative pb-[120%] overflow-hidden">
                       <img
-                        src={book.imageUrl ? `http://localhost:5176${book.imageUrl}` : placeholderImg}
+                        src={book.imageUrl ? `http://34.192.89.242:5176${book.imageUrl}` : placeholderImg}
                         alt={book.title}
                         className="absolute h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-300"
                         onError={e => { e.target.onerror = null; e.target.src = placeholderImg; }}

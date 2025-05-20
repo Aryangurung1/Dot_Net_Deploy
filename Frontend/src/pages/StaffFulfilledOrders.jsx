@@ -19,7 +19,7 @@ const StaffFulfilledOrders = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await axios.get('http://localhost:5176/api/Staff/fulfilled-orders', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Staff/fulfilled-orders', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(res.data);
@@ -117,7 +117,7 @@ const StaffFulfilledOrders = () => {
                     {order.items?.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-4 p-3 bg-gray-50 rounded-lg">
                         <img
-                          src={item.book?.imageUrl ? `http://localhost:5176${item.book.imageUrl}` : '/placeholder-book.jpg'}
+                          src={item.book?.imageUrl ? `http://34.192.89.242:5176${item.book.imageUrl}` : '/placeholder-book.jpg'}
                           alt={item.book?.title || 'Book'}
                           className="h-16 w-12 object-cover rounded border"
                           onError={e => { e.target.onerror = null; e.target.src = '/placeholder-book.jpg'; }}

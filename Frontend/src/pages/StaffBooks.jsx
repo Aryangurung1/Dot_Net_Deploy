@@ -51,11 +51,11 @@ const StaffBooks = () => {
     const fetchFilters = async () => {
       try {
         const [a, g, l, f, p] = await Promise.all([
-          axios.get('http://localhost:5176/api/books/authors'),
-          axios.get('http://localhost:5176/api/books/genres'),
-          axios.get('http://localhost:5176/api/books/languages'),
-          axios.get('http://localhost:5176/api/books/formats'),
-          axios.get('http://localhost:5176/api/books/publishers'),
+          axios.get('http://34.192.89.242:5176/api/books/authors'),
+          axios.get('http://34.192.89.242:5176/api/books/genres'),
+          axios.get('http://34.192.89.242:5176/api/books/languages'),
+          axios.get('http://34.192.89.242:5176/api/books/formats'),
+          axios.get('http://34.192.89.242:5176/api/books/publishers'),
         ]);
         setAuthors(a.data);
         setGenres(g.data);
@@ -136,7 +136,7 @@ const StaffBooks = () => {
       if (selectedPublishers.length > 0) {
         selectedPublishers.forEach(publisher => params.append('publishers[]', publisher));
       }
-      const res = await axios.get(`http://localhost:5176/api/books`, { params });
+      const res = await axios.get(`http://34.192.89.242:5176/api/books`, { params });
       setBooks(res.data);
       const totalCount = parseInt(res.headers['x-total-count'] || '0');
       setTotalPages(Math.max(1, Math.ceil(totalCount / booksPerPage)));
@@ -362,7 +362,7 @@ const StaffBooks = () => {
           >
             <div className="relative aspect-[3/4] rounded-t-xl overflow-hidden">
               <img
-                src={book.imageUrl ? `http://localhost:5176${book.imageUrl}` : placeholderImg}
+                src={book.imageUrl ? `http://34.192.89.242:5176${book.imageUrl}` : placeholderImg}
                 alt={book.title}
                 className="w-full h-full object-cover"
                 onError={e => { e.target.onerror = null; e.target.src = placeholderImg; }}

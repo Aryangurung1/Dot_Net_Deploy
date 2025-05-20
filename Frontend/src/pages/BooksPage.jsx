@@ -96,7 +96,7 @@ const fetchBooks = async () => {
     setLoading(true);
     const params = new URLSearchParams();
     // ... all your params ...
-    const res = await axios.get(`http://localhost:5176/api/books`, {
+    const res = await axios.get(`http://34.192.89.242:5176/api/books`, {
       headers: { Authorization: `Bearer ${token}` },
       params
     });
@@ -117,7 +117,7 @@ const { addToast } = useToast();
 useEffect(() => {
   // SignalR connection for real-time order notifications
   const connection = new HubConnectionBuilder()
-    .withUrl('http://localhost:5176/orderHub')
+    .withUrl('http://34.192.89.242:5176/orderHub')
     .withAutomaticReconnect()
     .build();
 

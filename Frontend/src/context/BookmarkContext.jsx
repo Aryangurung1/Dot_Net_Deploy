@@ -20,7 +20,7 @@ export const BookmarkProvider = ({ children }) => {
     if (!user || user.role !== 'Member') return;
     
     try {
-      const res = await axios.get('http://localhost:5176/api/Bookmark', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Bookmark', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookmarkCount(res.data.length);

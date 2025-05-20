@@ -21,7 +21,7 @@ const AdminReviews = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/books', {
+      const res = await axios.get('http://34.192.89.242:5176/api/books', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBooks(res.data);
@@ -35,7 +35,7 @@ const AdminReviews = () => {
     setError('');
     setSuccess('');
     try {
-      const res = await axios.get(`http://localhost:5176/api/Review/book/${bookId}`, {
+      const res = await axios.get(`http://34.192.89.242:5176/api/Review/book/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setReviews(res.data);
@@ -64,7 +64,7 @@ const AdminReviews = () => {
   const confirmDeleteReview = async () => {
     if (!reviewToDelete) return;
     try {
-      await axios.delete(`http://localhost:5176/api/Admin/reviews/${reviewToDelete.reviewId}`, {
+      await axios.delete(`http://34.192.89.242:5176/api/Admin/reviews/${reviewToDelete.reviewId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSuccess('Review deleted successfully');

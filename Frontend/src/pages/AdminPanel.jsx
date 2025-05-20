@@ -90,14 +90,14 @@ const AdminPanel = () => {
           topBestsellersRes,
           totalSalesRes
         ] = await Promise.all([
-          axios.get('http://localhost:5176/api/books', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5176/api/Admin/dashboard/order-summary', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5176/api/Admin/dashboard/genres', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5176/api/Admin/dashboard/order-status', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5176/api/Admin/dashboard/monthly-sales', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5176/api/Admin/dashboard/new-members', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5176/api/Admin/dashboard/top-bestsellers', { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get('http://localhost:5176/api/Admin/dashboard/total-sales', { headers: { Authorization: `Bearer ${token}` } })
+          axios.get('http://34.192.89.242:5176/api/books', { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get('http://34.192.89.242:5176/api/Admin/dashboard/order-summary', { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get('http://34.192.89.242:5176/api/Admin/dashboard/genres', { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get('http://34.192.89.242:5176/api/Admin/dashboard/order-status', { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get('http://34.192.89.242:5176/api/Admin/dashboard/monthly-sales', { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get('http://34.192.89.242:5176/api/Admin/dashboard/new-members', { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get('http://34.192.89.242:5176/api/Admin/dashboard/top-bestsellers', { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get('http://34.192.89.242:5176/api/Admin/dashboard/total-sales', { headers: { Authorization: `Bearer ${token}` } })
         ]);
 
         // Metrics from books

@@ -17,7 +17,7 @@ const OrderManagement = () => {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Orders/all', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Orders/all', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setOrders(res.data);
@@ -30,7 +30,7 @@ const OrderManagement = () => {
 
   useEffect(() => {
     if (!loading && orders.length > 0) {
-      axios.get('http://localhost:5176/api/Books')
+      axios.get('http://34.192.89.242:5176/api/Books')
         .then(res => {
           const details = {};
           res.data.forEach(book => {
@@ -44,7 +44,7 @@ const OrderManagement = () => {
 
   const handleUpdateStatus = async (orderId, status) => {
     try {
-      await axios.put(`http://localhost:5176/api/Orders/${orderId}/status`, { status }, {
+      await axios.put(`http://34.192.89.242:5176/api/Orders/${orderId}/status`, { status }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchOrders();
@@ -130,7 +130,7 @@ const OrderManagement = () => {
                       {order.items.map((item, index) => {
                         const book = bookDetailsByTitle[item.title];
                         const imageUrl = book?.imageUrl
-                          ? `http://localhost:5176${book.imageUrl}`
+                          ? `http://34.192.89.242:5176${book.imageUrl}`
                           : '/placeholder-book.jpg';
                         return (
                           <li key={index} className="flex justify-between items-center">

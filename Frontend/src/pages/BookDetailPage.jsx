@@ -43,7 +43,7 @@ const BookDetailPage = () => {
 
   const fetchBook = async () => {
     try {
-      const res = await axios.get(`http://localhost:5176/api/books/${id}`);
+      const res = await axios.get(`http://34.192.89.242:5176/api/books/${id}`);
       setBook(res.data);
     } catch (err) {
       setError('Failed to load book');
@@ -54,7 +54,7 @@ const BookDetailPage = () => {
 
   const fetchReviews = async () => {
     try {
-      const res = await axios.get(`http://localhost:5176/api/Review/book/${id}`);
+      const res = await axios.get(`http://34.192.89.242:5176/api/Review/book/${id}`);
       setReviews(res.data);
     } catch (err) {
       setError('Failed to load reviews');
@@ -69,7 +69,7 @@ const BookDetailPage = () => {
     }
 
     try {
-      await axios.post('http://localhost:5176/api/Cart', {
+      await axios.post('http://34.192.89.242:5176/api/Cart', {
         bookId: parseInt(id),
         quantity: 1
       }, {
@@ -93,14 +93,14 @@ const BookDetailPage = () => {
     try {
       if (isBookmarked) {
         // Remove bookmark
-        await axios.delete(`http://localhost:5176/api/Bookmark/${id}`, {
+        await axios.delete(`http://34.192.89.242:5176/api/Bookmark/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setIsBookmarked(false);
         addToast('Book removed from bookmarks', 'success');
       } else {
         // Add bookmark
-        await axios.post(`http://localhost:5176/api/Bookmark/${id}`, {}, {
+        await axios.post(`http://34.192.89.242:5176/api/Bookmark/${id}`, {}, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setIsBookmarked(true);
@@ -115,7 +115,7 @@ const BookDetailPage = () => {
 
   const checkBookmarkStatus = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Bookmark', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Bookmark', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setIsBookmarked(res.data.some(b => b.bookId === parseInt(id)));
@@ -126,7 +126,7 @@ const BookDetailPage = () => {
 
   const checkCanReview = async () => {
     try {
-      const res = await axios.get(`http://localhost:5176/api/Review/can-review/${id}`, {
+      const res = await axios.get(`http://34.192.89.242:5176/api/Review/can-review/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCanReview(res.data.canReview);
@@ -142,7 +142,7 @@ const BookDetailPage = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:5176/api/Review', {
+      await axios.post('http://34.192.89.242:5176/api/Review', {
         bookId: parseInt(id),
         rating: reviewInput.rating,
         comment: reviewInput.comment
@@ -168,7 +168,7 @@ const BookDetailPage = () => {
 
   const handleEditSubmit = async (reviewId) => {
     try {
-      await axios.put(`http://localhost:5176/api/Review/${reviewId}`, {
+      await axios.put(`http://34.192.89.242:5176/api/Review/${reviewId}`, {
         rating: editInput.rating,
         comment: editInput.comment
       }, {
@@ -190,7 +190,7 @@ const BookDetailPage = () => {
     if (!window.confirm('Are you sure you want to delete this review?')) return;
     try {
       // Admin and member both can delete (admin: any, member: own)
-      await axios.delete(`http://localhost:5176/api/Admin/reviews/${reviewId}`, {
+      await axios.delete(`http://34.192.89.242:5176/api/Admin/reviews/${reviewId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchReviews();
@@ -213,7 +213,7 @@ const BookDetailPage = () => {
     setIsSubmittingReview(true);
     try {
       await axios.post(
-        'http://localhost:5176/api/Review',
+        'http://34.192.89.242:5176/api/Review',
         {
           bookId: book.bookId,
           rating: userReview.rating,
@@ -254,7 +254,7 @@ const BookDetailPage = () => {
             {/* Book Image */}
             <div className="relative aspect-[3/4] rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
               <img
-                src={book.imageUrl ? `http://localhost:5176${book.imageUrl}` : '/placeholder-book.jpg'}
+                src={book.imageUrl ? `http://34.192.89.242:5176${book.imageUrl}` : '/placeholder-book.jpg'}
                 alt={book.title}
                 className="w-full h-full object-cover"
                 onError={e => { e.target.onerror = null; e.target.src = '/placeholder-book.jpg'; }}

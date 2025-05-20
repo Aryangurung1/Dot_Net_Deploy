@@ -16,7 +16,7 @@ const BookList = () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/books');
+      const response = await axios.get('http://34.192.89.242:5000/api/books');
       setBooks(response.data);
     } catch (error) {
       setError('Failed to fetch books');
@@ -30,7 +30,7 @@ const BookList = () => {
 
   const handleAddBook = async (formData) => {
     try {
-      await axios.post('http://localhost:5000/api/books', formData, {
+      await axios.post('http://34.192.89.242:5000/api/books', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setShowAddModal(false);
@@ -43,7 +43,7 @@ const BookList = () => {
 
   const handleEditBook = async (formData) => {
     try {
-      await axios.put(`http://localhost:5000/api/books/${selectedBook.bookId}`, formData, {
+      await axios.put(`http://34.192.89.242:5000/api/books/${selectedBook.bookId}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setShowEditModal(false);
@@ -56,7 +56,7 @@ const BookList = () => {
 
   const handleDeleteBook = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/books/${deleteId}`);
+      await axios.delete(`http://34.192.89.242:5000/api/books/${deleteId}`);
       setShowDeleteModal(false);
       setDeleteId(null);
       fetchBooks();
@@ -132,7 +132,7 @@ const BookList = () => {
                 )}
                 <div className="h-56 bg-indigo-50 flex items-center justify-center rounded-t-xl">
                   <img
-                    src={book.imageUrl ? `http://localhost:5000${book.imageUrl}` : placeholderImg}
+                    src={book.imageUrl ? `http://34.192.89.242:5000${book.imageUrl}` : placeholderImg}
                     alt={book.title}
                     className="object-contain h-full w-full"
                     onError={e => { e.target.onerror = null; e.target.src = placeholderImg; }}
@@ -235,7 +235,7 @@ const BookList = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="h-64 overflow-hidden rounded-lg bg-indigo-50 flex items-center justify-center">
                     <img
-                      src={selectedBook.imageUrl ? `http://localhost:5000${selectedBook.imageUrl}` : placeholderImg}
+                      src={selectedBook.imageUrl ? `http://34.192.89.242:5000${selectedBook.imageUrl}` : placeholderImg}
                       alt={selectedBook.title}
                       className="w-full h-full object-contain"
                       onError={e => { e.target.onerror = null; e.target.src = placeholderImg; }}

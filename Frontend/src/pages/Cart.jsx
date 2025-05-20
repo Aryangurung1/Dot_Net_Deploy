@@ -31,7 +31,7 @@ const Cart = () => {
   const fetchCart = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:5176/api/Cart', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Cart', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCart(res.data);
@@ -45,7 +45,7 @@ const Cart = () => {
 
   const fetchFulfilledOrders = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Orders/fulfilled-count', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Orders/fulfilled-count', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setFulfilledOrders(res.data.fulfilledCount);
@@ -57,7 +57,7 @@ const Cart = () => {
 
   const handleUpdateQuantity = async (bookId, quantity) => {
     try {
-      await axios.post('http://localhost:5176/api/Cart', {
+      await axios.post('http://34.192.89.242:5176/api/Cart', {
         bookId,
         quantity
       }, {
@@ -74,7 +74,7 @@ const Cart = () => {
 
   const handleRemoveItem = async (bookId) => {
     try {
-      await axios.delete(`http://localhost:5176/api/Cart/${bookId}`, {
+      await axios.delete(`http://34.192.89.242:5176/api/Cart/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       addToast('Item removed from cart', 'success');
@@ -88,7 +88,7 @@ const Cart = () => {
 
   const handleClearCart = async () => {
     try {
-      await axios.delete('http://localhost:5176/api/Cart/clear', {
+      await axios.delete('http://34.192.89.242:5176/api/Cart/clear', {
         headers: { Authorization: `Bearer ${token}` }
       });
       addToast('Cart cleared successfully', 'success');
@@ -113,7 +113,7 @@ const Cart = () => {
         bookId: item.bookId,
         quantity: item.quantity
       }));
-      const res = await axios.post('http://localhost:5176/api/Orders', {
+      const res = await axios.post('http://34.192.89.242:5176/api/Orders', {
         items
       }, {
         headers: { Authorization: `Bearer ${token}` }
@@ -205,7 +205,7 @@ const Cart = () => {
                       <div className="flex gap-6">
                         <div className="flex-shrink-0">
                           <img
-                            src={item.imageUrl ? `http://localhost:5176${item.imageUrl}` : placeholderImg}
+                            src={item.imageUrl ? `http://34.192.89.242:5176${item.imageUrl}` : placeholderImg}
                             alt={item.bookTitle}
                             className="h-32 w-24 object-cover rounded-lg shadow-sm"
                             onError={e => { e.target.onerror = null; e.target.src = placeholderImg; }}

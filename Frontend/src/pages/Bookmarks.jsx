@@ -25,7 +25,7 @@ const Bookmarks = () => {
 
   const fetchBookmarks = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/Bookmark', {
+      const res = await axios.get('http://34.192.89.242:5176/api/Bookmark', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookmarks(res.data);
@@ -39,7 +39,7 @@ const Bookmarks = () => {
 
   const handleRemoveBookmark = async (bookId) => {
     try {
-      await axios.delete(`http://localhost:5176/api/Bookmark/${bookId}`, {
+      await axios.delete(`http://34.192.89.242:5176/api/Bookmark/${bookId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setBookmarks(prev => prev.filter(book => book.bookId !== bookId));
@@ -58,7 +58,7 @@ const Bookmarks = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:5176/api/Cart', {
+      await axios.post('http://34.192.89.242:5176/api/Cart', {
         bookId,
         quantity: 1
       }, {
@@ -130,7 +130,7 @@ const Bookmarks = () => {
                 >
                   <div className="relative">
                     <img
-                      src={book.imageUrl ? `http://localhost:5176${book.imageUrl}` : placeholderImg}
+                      src={book.imageUrl ? `http://34.192.89.242:5176${book.imageUrl}` : placeholderImg}
                       alt={book.title}
                       className="w-full h-48 object-cover"
                       onError={e => { e.target.onerror = null; e.target.src = placeholderImg; }}

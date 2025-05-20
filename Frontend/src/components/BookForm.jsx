@@ -31,7 +31,7 @@ const BookForm = ({ onSubmit, initialData = {}, isEdit = false, onCancel }) => {
     isAwardWinner: false,
     isBestseller: false
   });
-  const [imagePreview, setImagePreview] = useState(initialData?.imageUrl ? `http://localhost:5176${initialData.imageUrl}` : '');
+  const [imagePreview, setImagePreview] = useState(initialData?.imageUrl ? `http://34.192.89.242:5176${initialData.imageUrl}` : '');
 
   useEffect(() => {
     if (isEdit && initialData) {
@@ -48,7 +48,7 @@ const BookForm = ({ onSubmit, initialData = {}, isEdit = false, onCancel }) => {
         isAwardWinner: initialData.isAwardWinner ?? initialData.IsAwardWinner ?? false,
         isBestseller: initialData.isBestseller ?? initialData.IsBestseller ?? false
       });
-      setImagePreview(initialData.imageUrl ? `http://localhost:5176${initialData.imageUrl}` : '');
+      setImagePreview(initialData.imageUrl ? `http://34.192.89.242:5176${initialData.imageUrl}` : '');
     }
     // eslint-disable-next-line
   }, [initialData, isEdit]);

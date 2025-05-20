@@ -70,11 +70,11 @@ const AdminBookManagement = () => {
     const fetchFilters = async () => {
       try {
         const [a, g, l, f, p] = await Promise.all([
-          axios.get('http://localhost:5176/api/books/authors'),
-          axios.get('http://localhost:5176/api/books/genres'),
-          axios.get('http://localhost:5176/api/books/languages'),
-          axios.get('http://localhost:5176/api/books/formats'),
-          axios.get('http://localhost:5176/api/books/publishers'),
+          axios.get('http://34.192.89.242:5176/api/books/authors'),
+          axios.get('http://34.192.89.242:5176/api/books/genres'),
+          axios.get('http://34.192.89.242:5176/api/books/languages'),
+          axios.get('http://34.192.89.242:5176/api/books/formats'),
+          axios.get('http://34.192.89.242:5176/api/books/publishers'),
         ]);
         setAuthors(a.data);
         setGenres(g.data);
@@ -158,7 +158,7 @@ const AdminBookManagement = () => {
         selectedPublishers.forEach(publisher => params.append('publishers[]', publisher));
       }
 
-      const res = await axios.get('http://localhost:5176/api/books', {
+      const res = await axios.get('http://34.192.89.242:5176/api/books', {
         headers: { Authorization: `Bearer ${token}` },
         params
       });
@@ -176,7 +176,7 @@ const AdminBookManagement = () => {
 
   const handleAddBook = async (formData) => {
     try {
-      await axios.post('http://localhost:5176/api/books', formData, {
+      await axios.post('http://34.192.89.242:5176/api/books', formData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
       });
       setSuccess('Book added successfully');
@@ -190,7 +190,7 @@ const AdminBookManagement = () => {
 
   const handleUpdateBook = async (formData) => {
     try {
-      await axios.put(`http://localhost:5176/api/books/${selectedBook.bookId}`, formData, {
+      await axios.put(`http://34.192.89.242:5176/api/books/${selectedBook.bookId}`, formData, {
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
       });
       setSuccess('Book updated successfully');
@@ -205,7 +205,7 @@ const AdminBookManagement = () => {
 
   const handleDeleteBook = async () => {
     try {
-      await axios.delete(`http://localhost:5176/api/books/${deleteId}`, {
+      await axios.delete(`http://34.192.89.242:5176/api/books/${deleteId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSuccess('Book deleted successfully');
@@ -417,7 +417,7 @@ const AdminBookManagement = () => {
                     <div className="relative mb-4">
                       <div className="h-48 bg-gray-50 rounded-lg flex items-center justify-center overflow-hidden">
                         <img
-                          src={book.imageUrl ? `http://localhost:5176${book.imageUrl}` : placeholderImg}
+                          src={book.imageUrl ? `http://34.192.89.242:5176${book.imageUrl}` : placeholderImg}
                           alt={book.title}
                           className="object-contain h-full max-h-44 w-auto"
                           onError={e => { e.target.onerror = null; e.target.src = placeholderImg; }}
@@ -671,7 +671,7 @@ const AdminBookManagement = () => {
                                 <div className="flex gap-6">
                                   <div className="flex-shrink-0">
                                     <img
-                                      src={selectedBook.imageUrl ? `http://localhost:5176${selectedBook.imageUrl}` : placeholderImg}
+                                      src={selectedBook.imageUrl ? `http://34.192.89.242:5176${selectedBook.imageUrl}` : placeholderImg}
                                       alt={selectedBook.title}
                                       className="h-48 w-32 object-cover rounded-lg shadow-md"
                                     />

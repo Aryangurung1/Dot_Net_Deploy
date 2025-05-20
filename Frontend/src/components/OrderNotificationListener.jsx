@@ -7,7 +7,7 @@ const OrderNotificationListener = () => {
 
   useEffect(() => {
     const connection = new HubConnectionBuilder()
-      .withUrl('http://localhost:5176/orderHub')
+      .withUrl('http://34.192.89.242:5176/orderHub')
       .withAutomaticReconnect()
       .build();
 

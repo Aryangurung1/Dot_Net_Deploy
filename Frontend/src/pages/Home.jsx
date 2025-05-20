@@ -14,7 +14,7 @@ const Home = () => {
 
   const fetchFeaturedBooks = async () => {
     try {
-      const res = await axios.get('http://localhost:5176/api/books');
+      const res = await axios.get('http://34.192.89.242:5176/api/books');
       const featured = res.data.filter(book => book.isOnSale);
       setFeaturedBooks(featured);
     } catch (err) {
@@ -82,7 +82,7 @@ const Home = () => {
                   <div className="bg-white rounded-lg overflow-hidden shadow transition-shadow hover:shadow-md h-full flex flex-col">
                     <div className="h-56 overflow-hidden">
                       <img
-                        src={book.imageUrl ? `http://localhost:5176${book.imageUrl}` : 'https://via.placeholder.com/300x400'}
+                        src={book.imageUrl ? `http://34.192.89.242:5176${book.imageUrl}` : 'https://via.placeholder.com/300x400'}
                         alt={book.title}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />

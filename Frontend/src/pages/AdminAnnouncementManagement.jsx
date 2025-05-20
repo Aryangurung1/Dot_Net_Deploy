@@ -41,7 +41,7 @@ const AdminAnnouncementManagement = () => {
     setError('');
     setSuccess('');
     try {
-      const res = await axios.get('http://localhost:5176/api/Announcement/active');
+      const res = await axios.get('http://34.192.89.242:5176/api/Announcement/active');
       setAnnouncements(res.data);
     } catch (err) {
       setError('Failed to fetch announcements');
@@ -69,7 +69,7 @@ const AdminAnnouncementManagement = () => {
       };
 
       await axios.post(
-        'http://localhost:5176/api/Announcement',
+        'http://34.192.89.242:5176/api/Announcement',
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -91,7 +91,7 @@ const AdminAnnouncementManagement = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5176/api/Announcement/${deleteId}`, {
+      await axios.delete(`http://34.192.89.242:5176/api/Announcement/${deleteId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSuccess('Announcement deleted successfully');
